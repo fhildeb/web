@@ -1,59 +1,95 @@
-html {
+/* PAGE, RESETS & TYPOGRAPHY */
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Courier New", monospace;
   -webkit-tap-highlight-color: transparent;
+  overflow-x: hidden;
+}
+
+body {
+  min-height: 100%;
+  padding-top: env(safe-area-inset-top, 24px);
+  box-sizing: border-box;
 }
 
 button {
   all: unset;
 }
 
-.link-button {
-  cursor: pointer;
-}
-
-html,
-body {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  font-family: "Courier New", monospace;
-}
+/* MAIN LAYOUT  */
 
 .background {
-  background-color: #4d4b4a;
-  background-image: url("../img/mwn.jpg");
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
-  height: 100%;
-  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 100%;
+  min-height: 100vh;
+  padding-top: 24px;
+  background: #4d4b4a url("../img/mwn.jpg") center/cover fixed;
+}
+
+.page-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 70px;
+  width: 100%;
+  max-width: 1300px;
+  padding: 24px;
+}
+
+.column-left,
+.column-center,
+.column-right {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.content-container {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+  min-width: 292px;
+  margin-bottom: 30px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(30px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
   overflow: hidden;
 }
 
-.center-container {
-  text-align: center;
-}
+/* LINK-TREE & BUTTONS */
 
 .linktree {
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
   gap: 20px;
-  width: 292px;
+  width: 100%;
+  min-width: 292px;
+  margin-bottom: 30px;
+  border-radius: 20px;
 }
 
 .link-button {
+  cursor: pointer;
   display: flex;
   align-items: center;
-  background: #2b2b2b;
-  color: #d3d3d3;
-  font-size: 18px;
-  border-radius: 50px;
+  width: 100%;
   padding: 14px 24px;
-  transition: all 0.2s ease;
+  font-size: 18px;
+  color: #d3d3d3;
+  background: #2b2b2b;
   border: 1px solid #3a3a3a;
+  border-radius: 50px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  transition: all 0.2s ease;
 }
 
 .link-button:hover {
@@ -69,18 +105,89 @@ body {
 }
 
 .icon {
+  flex-shrink: 0;
   width: 24px;
   height: 24px;
-  flex-shrink: 0;
+  margin-right: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-right: 12px;
 }
 
 .icon svg {
   width: 100%;
   height: 100%;
-  display: block;
   fill: currentColor;
+}
+
+/* BACKGROUND PATTERNS & EFFECTS */
+
+.moving-bg,
+.static-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.moving-bg {
+  z-index: -1;
+  opacity: 0;
+  animation: fadePattern 10s ease-in-out infinite;
+}
+
+.static-bg {
+  z-index: -1;
+  opacity: 0.3;
+}
+
+.pattern {
+  z-index: -1;
+}
+
+@keyframes fadePattern {
+  0%,
+  100% {
+    opacity: 0.1;
+  }
+  20%,
+  80% {
+    opacity: 0.3;
+  }
+  40%,
+  60% {
+    opacity: 0.5;
+  }
+}
+
+/* RESPONSIVE BREAKPOINTS */
+
+@media (max-width: 1030px) {
+  .page-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 614px) {
+  .page-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 876px) {
+  .page-grid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    padding: 24px 12px;
+  }
+
+  .linktree,
+  .content-container {
+    width: 100%;
+    max-width: 320px;
+  }
 }
