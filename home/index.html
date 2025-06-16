@@ -7,6 +7,29 @@
 
     <!-- Styles -->
     <link rel="stylesheet" href="styles.css" />
+
+    <!-- Accordion Logic -->
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const headers = document.querySelectorAll(
+          ".timeline .accordion-header"
+        );
+
+        headers.forEach((header) => {
+          header.addEventListener("click", () => {
+            const section = header.parentElement;
+            if (section.classList.contains("active")) return;
+
+            // Close everything beofre opening the selected text
+            document
+              .querySelectorAll(".timeline .accordion")
+              .forEach((sec) => sec.classList.remove("active"));
+
+            setTimeout(() => section.classList.add("active"), 300);
+          });
+        });
+      });
+    </script>
   </head>
   <body>
     <div class="background">
@@ -40,7 +63,7 @@
           <div class="content-container">
             <img src="../img/map.jpeg" class="static-bg" alt="" />
             <div class="profile-description">
-              My name is Felix, also referred as Voulex. I'm a web and software
+              My name is Felix, also know as Voulex. I'm a web and software
               engineer interested in
               <nobr>
                 <img src="../icons/linux.svg" alt="OSS" />
@@ -268,6 +291,60 @@
           </div>
         </div>
         <!-- RIGHT COLUMN: Accordion -->
+        <div class="column-right">
+          <div class="content-container">
+            <svg class="moving-bg pattern" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <pattern
+                  id="pattern-red"
+                  width="20"
+                  height="20"
+                  patternUnits="userSpaceOnUse"
+                  patternTransform="rotate(45) scale(2)"
+                >
+                  <rect width="100%" height="100%" fill-opacity="0" />
+                  <path
+                    d="M3.25 10h13.5M10 3.25v13.5"
+                    fill="none"
+                    stroke="#f44034"
+                    stroke-linecap="square"
+                  />
+                </pattern>
+              </defs>
+              <rect width="100%" height="100%" fill="url(#pattern-red)" />
+            </svg>
+
+            <div class="timeline">
+              <div class="accordion active">
+                <div class="accordion-header">Being in Motion</div>
+                <div class="accordion-content">
+                  I am a conscientious and creative being, currently traveling
+                  on a tiny sphere through infinite expanses of the universe
+                  while exploring my many selves, keeping those that feel
+                  authentic.
+                </div>
+              </div>
+
+              <div class="accordion">
+                <div class="accordion-header">Finding Purpose</div>
+                <div class="accordion-content">
+                  My mission is to discover and fulfill what I believe I was put
+                  on this earth for and carry it out to the best of my ability,
+                  bringing a positive benefit to people and creating something
+                  lasting for humanity as a whole.
+                </div>
+              </div>
+
+              <div class="accordion">
+                <div class="accordion-header">Reaching Out</div>
+                <div class="accordion-content">
+                  Being an introvert, I mostly communicate through glass, light,
+                  and air, cherishing the rare moments of meeting great and kind
+                  people to open up with, quietly hoping for real connections to
+                  flicker back.
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
