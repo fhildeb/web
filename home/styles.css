@@ -63,6 +63,18 @@ button {
   overflow: hidden;
 }
 
+/* COLUMN MAPPING */
+
+.column-left {
+  grid-area: left;
+}
+.column-center {
+  grid-area: center;
+}
+.column-right {
+  grid-area: right;
+}
+
 /* LINK-TREE & BUTTONS */
 
 .linktree {
@@ -231,15 +243,21 @@ button {
 
 /* RESPONSIVE BREAKPOINTS */
 
-@media (max-width: 1030px) {
-  .page-grid {
-    grid-template-columns: 1fr 1fr;
-  }
+.page-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-areas: "left center right";
 }
 
-@media (max-width: 614px) {
+@media (max-width: 1030px) and (min-width: 877px) {
   .page-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      "left   center"
+      "right  center";
+  }
+  .column-right {
+    margin-top: -65px;
   }
 }
 
@@ -250,6 +268,10 @@ button {
     align-items: center;
     gap: 30px;
     padding: 24px 12px;
+  }
+
+  .column-right {
+    margin-top: auto;
   }
 
   .linktree,
