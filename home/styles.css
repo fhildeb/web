@@ -33,11 +33,12 @@ button {
 
 .page-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
   gap: 70px;
   width: 100%;
   max-width: 1300px;
   padding: 24px;
+  grid-template-columns: 1fr 320px 1fr;
+  grid-template-areas: "left center right";
 }
 
 .column-left,
@@ -205,7 +206,7 @@ button {
 
 .timeline {
   margin: auto;
-  min-height: 530px;
+  min-height: 510px;
 }
 
 .timeline .accordion {
@@ -243,15 +244,9 @@ button {
 
 /* RESPONSIVE BREAKPOINTS */
 
-.page-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-areas: "left center right";
-}
-
 @media (max-width: 1030px) and (min-width: 877px) {
   .page-grid {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 320px;
     grid-template-areas:
       "left   center"
       "right  center";
