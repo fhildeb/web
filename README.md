@@ -18,3 +18,7 @@ This is a minimal, responsive, and fast-loading personal homepage built using on
 - [`tbd`](./tbd/): Placeholder page when under development.
 
 > ⚠️ Buttonless introduces mobile _focus_, _tap_, or _preview_ modifications due to native OS highlighting.
+
+## Tools
+
+- [Favicon Checker](https://realfavicongenerator.net/)
